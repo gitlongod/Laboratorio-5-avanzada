@@ -24,8 +24,7 @@ namespace Laboratorio_5_avanzada
         }
         public static void AddTarea()
         {
-            Console.Clear();
-
+           
             string text = "BIENVENIDO AL APARTADO DE AGREGAR TAREA";
 
             int windowWidth = Console.WindowWidth;
@@ -36,6 +35,7 @@ namespace Laboratorio_5_avanzada
             {
                 spaces = 0;
             }
+
             string centeredText = new string(' ', spaces) + text;
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine($"\n{centeredText}");
@@ -49,6 +49,7 @@ namespace Laboratorio_5_avanzada
             Tareas addTarea = tareas.Find(p => p.Name == nameHomework);
             if (addTarea == null)
             {
+                Console.Clear();
                 string estadoInicial = "Pendiente";
                 tareas.Add(new Tareas(num,nameHomework, description,estadoInicial));
                 Console.ForegroundColor = ConsoleColor.Green;
@@ -58,6 +59,7 @@ namespace Laboratorio_5_avanzada
             }
             else
             {
+                Console.Clear();
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("LA TAREA YA FUE INGRESADA");
                 Console.ResetColor();
@@ -69,7 +71,7 @@ namespace Laboratorio_5_avanzada
             foreach (Tareas tarea in tareas)
             {
                 Console.Clear();
-
+                Console.WriteLine();
                 string text = "LAS TAREAS INGRESADAS AL MOMENTO SON :";
 
                 int windowWidth = Console.WindowWidth;
@@ -115,7 +117,16 @@ namespace Laboratorio_5_avanzada
             if (deleteTarea != null)
             {
                 deleteTarea.Estado = "Completada";
-
+                Console.ForegroundColor= ConsoleColor.Green;
+                Console.WriteLine("SE HA CAMBIADO EL ESTADO DE LA TAREA A COMPLETADA");
+                Console.ReadKey();
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("NÚMERO DE TAREA NO ENCONTRADA INGRESE UN NÚMERO EXISTENTE");
+                Console.ResetColor();
+                Console.ReadKey();
             }
 
         }

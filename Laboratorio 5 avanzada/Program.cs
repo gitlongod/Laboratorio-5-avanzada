@@ -1,5 +1,5 @@
 ﻿using Laboratorio_5_avanzada;
-
+bool generalContinue = true;
 do
 {
 	try
@@ -39,9 +39,10 @@ void ShowMenu(ref List<Tareas>tareas)
 			Tareas.ShowTareas();
 			break;
 			case 3:
-			
+			Tareas.ChangeEstado();
 			break;
 			case 4:
+			generalContinue = false;
 			break;
 			
 	}
